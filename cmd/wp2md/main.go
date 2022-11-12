@@ -17,7 +17,7 @@ import (
 
 const (
 	postTemplate = `---
-title: "{{ .Title }}"
+title: {{ .Title }}
 date: {{ .Created }}
 draft: {{ .Draft }}
 slug: {{ .Name }}
