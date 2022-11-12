@@ -9,9 +9,10 @@ import (
 	"github.com/blockloop/scan"
 	_ "github.com/mattn/go-sqlite3"
 	log "github.com/sirupsen/logrus"
-	"net/url"
+	"html"
 	"os"
 	"path/filepath"
+	"strings"
 	"text/template"
 	"time"
 )
@@ -91,7 +92,8 @@ func main() {
 		}
 		post.Content = content
 
-		post.Title = url.QueryEscape(post.Title)
+		post.Title = html.EscapeString(post.Title)
+		post.Title = strings.Replace(post.Title, ":", "%3A", -1)
 
 		var renderedPost bytes.Buffer
 		if err := tmpl.Execute(&renderedPost, post); err != nil {
