@@ -34,8 +34,6 @@ jobs:
         uses: actions/checkout@v1
       - name: Run test
         run: make test
-      - name: Run lint
-        run: make lint
   release:
       name: semantic version tagging on merge to master branch
       runs-on: ubuntu-latest
